@@ -1,0 +1,61 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<div class="cl pd-5 bg-1 bk-gray mt-20"> 修改推荐位信息</div>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add" method="post" action="{:url('featured/update')}">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input type="text" class="input-text" value="{$results.title}" placeholder="" id="" name="title">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>选择推荐类别：</label>
+            <div class="formControls col-xs-8 col-sm-3"> <span class="select-box">
+				<select name="type" class="select">
+
+                    {volist name="types" id="vo"}
+					<option value="{$key}">{$vo}</option>
+                    {/volist}
+				</select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">url：</label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input type="text" class="input-text" value="{$results.url}" placeholder="" id="" name="url">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">描述：</label>
+            <div class="formControls col-xs-8 col-sm-3">
+                <input type="text" class="input-text" value="{$results.description}" placeholder="" id="" name="description">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <input type="hidden" name="id" value="{$id}">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit">
+                    <i class="Hui-iconfont">&#xe632;</i> 修改
+                </button>
+            </div>
+        </div>
+
+    </form>
+</article>
+<script>
+    /**定义页面全局变量**/
+    var SCOPE = {
+        'city_url' : '{:url('api/city/getCitysByParentId')}',
+        'category_url' : '{:url('api/category/getCategorysByParentId')}',
+        'uploadify_swf' : '__STATIC__/admin/uploadify/uploadify.swf',
+        'image_upload' : '{:url('api/image/upload')}',
+    };
+</script>
+<!--包含头部文件-->
+{include file="public/footer" /}

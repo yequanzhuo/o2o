@@ -1,0 +1,40 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="40"><input name="" type="checkbox" value=""></th>
+                <th width="80">ID</th>
+                <th width="100">商品订单号</th>
+                <th width="100">用户名称</th>
+                <th width="100">支付总额</th>
+                <th width="100">支付状态</th>
+                <th width="150">新增时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="orders" id="vo"}
+            <tr class="text-c">
+                <td><input name="" type="checkbox" value=""></td>
+                <td>{$vo.id}</td>
+                <td>{$vo.out_trade_no}</td>
+                <td>{$vo.username}</td>
+                <td>{$vo.total_price}</td>
+                <td>{$vo.pay_status}</td>
+                <td>{$vo.create_time}</td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+    {:pagination($orders)}
+</div>
+<div class="cl pd-5 bg-1 bk-gray mt-20 tp5-o2o"></div>
+<!--包含头部文件-->
+{include file="public/footer" /}
+</body>
+</html>

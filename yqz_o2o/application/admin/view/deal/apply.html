@@ -1,0 +1,47 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商家团购提交申请 </nav>
+<div class="page-container">
+
+
+    <div class="mt-20">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="20">ID</th>
+                <th width="100">商品名称</th>
+                <th width="40">栏目分类</th>
+                <th width="40">城市</th>
+                <th width="40">购买件数</th>
+                <th width="80">开始结束时间</th>
+                <th width="80">创建时间</th>
+                <th width="60">状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name="applyDeals" id="vo"}
+            <tr class="text-c">
+                <td>{$vo.id}</td>
+                <td>{$vo.name}</td>
+                <td>{$categoryArrs[$vo.category_id]}</td>
+                <td>{$cityArrs[$vo.city_id]}</td>
+                <td>{$vo.buy_count}</td>
+                <td>{$vo.start_time}<br />{$vo.end_time}</td>
+                <td>{$vo.create_time}</td>
+                <td class="td-status">
+                    <a href="{:url('deal/status',['id'=>$vo.id,'status'=>1])}" title="点击修改状态">
+                        {$vo.status|status}
+                    </a>
+                </td>
+
+            </tr>
+            {/volist}
+
+            </tbody>
+        </table>
+    </div>
+    {:pagination($applyDeals)}
+</div>
+<!--包含头部文件-->
+{include file="public/footer" /}

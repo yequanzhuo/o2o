@@ -1,0 +1,33 @@
+<!--包含头部文件-->
+{include file="public/header" /}
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 门店列表 </nav>
+<div class="page-container">
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a class="btn btn-primary radius"  href="{:url('location/add')}"><i class="Hui-iconfont">&#xe600;</i> 添加分店</a></span> <span class="r"></span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+			<tr class="text-c">
+				<th width="80">ID</th>
+				<th width="100">名称</th>
+				<th width="60">申请时间</th>
+				<th width="60">是否为总店</th>
+				<th width="60">状态</th>
+			</tr>
+			</thead>
+			<tbody>
+			{volist name="bis" id="vo"}
+			<tr class="text-c">
+				<td>{$vo.id}</td>
+				<td>{$vo.name}</td>
+				<td>{$vo.create_time}</td>
+				<td>{$vo.is_main|isYesNo}</td>
+				<td class="td-status">{$vo.status|status}</td>
+			</tr>
+			{/volist}
+			</tbody>
+		</table>
+	</div>
+</div>
+<!--包含头部文件-->
+{include file="public/footer" /}
